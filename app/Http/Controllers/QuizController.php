@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class QuizController extends Controller
 {
@@ -15,7 +16,21 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quiz = Quiz::latest()->get();
+        $quiz = Quiz::get()
+        ->map(function($item){
+            return [
+                'id' => $item->id,
+                'name' => $item->name,
+                'version' => $item->version->name,
+                'class' => $item->class->name,
+                'subject' => $item->subject->name,
+                'start_date' => Carbon::parse($item->start_date)->format('m/d/Y'),
+                'start_time' => Carbon::parse($item->start_time)->format('h:i A'),
+                'end_date' => Carbon::parse($item->end_date)->format('m/d/Y'),
+                'end_time' => Carbon::parse($item->end_time)->format('h:i A'),
+                'pass_percentage' => $item->pass_percentage,
+            ];
+        });
         return response()->json($quiz, 200);
     }
 
@@ -46,6 +61,7 @@ class QuizController extends Controller
             'start_time' => 'nullable',
             'end_date' => 'nullable',
             'end_time' => 'nullable',
+            'pass_percentage' => 'nullable',
         ]);
 
         $data = $request->all();
@@ -101,6 +117,7 @@ class QuizController extends Controller
             'start_time' => 'nullable',
             'end_date' => 'nullable',
             'end_time' => 'nullable',
+            'pass_percentage' => 'nullable',
         ]);
 
         $data = $request->all();
@@ -116,7 +133,7 @@ class QuizController extends Controller
      * @param  \App\Models\Quiz  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Quiz $subject)
+    public function destroy(Quiz $quiz)
     {
         if($quiz){
             $quiz->delete();

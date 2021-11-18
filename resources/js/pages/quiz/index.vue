@@ -33,12 +33,12 @@
                   <th>End Date</th>
                   <th>End Time</th>
                   <th>Pass Percentage</th>
-                  <th style="width: 150px">Action</th>
+                  <!-- <th style="width: 150px">Action</th> -->
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="quiz in quizes" :key="quiz.id">
-                  <td style="width: 100px">{{ quiz.id }}</td>
+                <tr v-for="(quiz, index) in quizes" :key="quiz.id">
+                  <td style="width: 100px">{{ index+1 }}</td>
                   <td>{{ quiz.name }}</td>
                   <td>{{ quiz.version }}</td>
                   <td>{{ quiz.class }}</td>
@@ -48,19 +48,19 @@
                   <td>{{ quiz.end_date }}</td>
                   <td>{{ quiz.end_time }}</td>
                   <td>{{ quiz.pass_percentage }}</td>
-                  <td style="width: 150px">
-                    <router-link
+                  <!-- <td style="width: 150px"> -->
+                    <!-- <router-link
                       class="btn btn-primary btn-sm"
                       :to="{ name: 'edit-class', params: { id: quiz.id } }"
                       >Edit</router-link
-                    >
-                    <a
-                      @click.prevent="deleteQuiz(clas)"
+                    > -->
+                    <!-- <a
+                      @click.prevent="deleteQuiz(quiz)"
                       href="#"
                       class="btn btn-danger btn-sm"
                       >delete</a
-                    >
-                  </td>
+                    > -->
+                  <!-- </td> -->
                 </tr>
               </tbody>
             </table>
@@ -94,8 +94,8 @@ export default {
         });
       });
 
-      let index = this.classes.indexOf(clas);
-      this.classes.splice(index, 1);
+      let index = this.quizes.indexOf(quiz);
+      this.quizes.splice(index, 1);
     },
   },
   mounted() {

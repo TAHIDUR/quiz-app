@@ -102,7 +102,7 @@
                     <label for="">Start Date</label>
 
                     <input
-                      type="text"
+                      type="date"
                       v-model="quizForm.start_date"
                       name="start_date"
                       class="form-control"
@@ -117,7 +117,7 @@
                     <label for="">Start Time</label>
 
                     <input
-                      type="text"
+                      type="time"
                       v-model="quizForm.start_time"
                       name="start_time"
                       class="form-control"
@@ -132,7 +132,7 @@
                     <label for="">End Date</label>
 
                     <input
-                      type="text"
+                      type="date"
                       v-model="quizForm.end_date"
                       name="end_date"
                       class="form-control"
@@ -147,7 +147,7 @@
                     <label for="">End Time</label>
 
                     <input
-                      type="text"
+                      type="time"
                       v-model="quizForm.end_time"
                       name="end_time"
                       class="form-control"
@@ -162,7 +162,7 @@
                     <label for="">Pass Percentage</label>
 
                     <input
-                      type="text"
+                      type="number"
                       v-model="quizForm.pass_percentage"
                       name="pass_percentage"
                       class="form-control"

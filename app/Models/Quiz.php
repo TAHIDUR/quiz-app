@@ -13,6 +13,9 @@ class Quiz extends Model
     use HasFactory;
 
 
+    protected $guarded = [];
+
+    public $timestamps = false;
 
 
     public function version()
