@@ -23,7 +23,6 @@ import EditSubject from '../pages/subject/edit.vue';
 
 import QuizList from '../pages/quiz/index.vue';
 import CreateQuiz from '../pages/quiz/create.vue';
-import EditQuiz from '../pages/quiz/edit.vue';
 
 
 
@@ -91,11 +90,6 @@ const routes = new VueRouter({
             path: '/quiz/create',
             component: CreateQuiz,
             name: 'create-quiz',
-        },
-        {
-            path: '/quiz/edit',
-            component: EditQuiz,
-            name: 'edit-quiz',
         }
     ]
 
